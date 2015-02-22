@@ -1,0 +1,48 @@
+﻿@model IEnumerable<AngularTypeScriptDemo.Models.Beer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div ng-controller="BeerCtrl">
+    <table class="table">
+        <thead>
+        <th>Beer</th>
+        <th>Colour</th>
+        <th>Has Tasted</th>
+        <th></th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="beer in Beers">
+                <td>{{beer.Name}}</td>
+                <td>{{beer.Colour}}</td>
+                <td>
+                    <input type="checkbox" ng-model="beer.HasTried" /> Have Tried
+                </td>
+                <td><a href="@Url.Action("Delete", "Beers")/?id={{beer.Id}}">Delete</a></td>
+            </tr>
+            <tr ng-if="Beers.length === 0">
+                <td colspan="4">There are no beers to display</td>
+            </tr>
+            <tr ng-if="states.showBeerForm">
+                <td>
+                    <input type="text" class="form-control" placeholder="Name" ng-model="new.Beer.Name" />
+                </td>
+                <td>
+                    <input type="text" class="form-control" placeholder="Colour" ng-model="new.Beer.Colour" />
+                </td>
+                <td>
+                    <input type="checkbox" class="" placeholder="Has Tried" ng-model="new.Beer.hasTried" /> Have tasted
+                </td>
+                <td>
+                    <button ng-click="addBeer(new.Beer)" class="btn btn-primary">Add</button>
+                    <button ng-click="showBeerForm(false)" class="btn btn-default">Cancel</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a ng-click="showBeerForm(true)" class="btn btn-primary">Add Beer</a>
+
+
+</div>
