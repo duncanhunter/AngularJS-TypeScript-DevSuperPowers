@@ -17,7 +17,8 @@ namespace AngularTypeScriptDemo
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
              "~/Scripts/angular.js",
              "~/app/app.js",
-             "~/app/controllers/BeerCtrl.js"
+             "~/app/controllers/beer.controller.js",
+             "~/app/services/beers.service.js"
              ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
